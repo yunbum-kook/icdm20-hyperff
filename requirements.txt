@@ -1,0 +1,6 @@
+scipy
+snap-stanford
+matplotlib
+powerlaw
+tqdm
+networkx
