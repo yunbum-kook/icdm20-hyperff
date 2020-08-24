@@ -5,7 +5,7 @@ In this work, we (A) establish structural and temporal patterns of real-world hy
 
 (A) Establishment of structural and dynamical patterns in real-world hypergraphs
 *  _Structural_: Heavy-tailed distributions of degrees, hyperedge sizes, intersection sizes, and singular values of incidence matrices.
-* _Dynamical_: Diminishing overlaps of hyperedges, densi- fication, and shrinking diameter.
+* _Dynamical_: Diminishing overlaps of hyperedges, densification, and shrinking diameter.
 
 (B) Stochastic model **HyperFF** (**Hyper** **F**orest **F**ire) for hypergraph generation with the following merits
 * _Realistic_: It exhibits all seven observed patterns and the five structural patterns reported in the previous study.
