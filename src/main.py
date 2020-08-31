@@ -9,7 +9,7 @@ from analysis_decomposition import analyze_decomposition
 from statistical_test import statistical_test
 
 def main(graph):
-    sv_k = {'contact': 326, 'email': 1000, 'substances': 5000, 'tags': 3000, 'threads': 1000, 'coauth': 500, 'model': 500}
+    sv_k = {'contact': 326, 'email': 1000, 'substances': 5000, 'tags': 3000, 'threads': 10000, 'coauth': 1000, 'model': 500}
     print('# Structural patterns and dynamical patterns')
     print('(See ../results/{}_*.txt and ../plots/{}_*.txt)'.format(graph.datatype, graph.datatype))
     analyze_pattern(graph, sv_k[graph.datatype])
