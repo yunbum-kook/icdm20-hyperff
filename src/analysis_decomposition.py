@@ -29,6 +29,7 @@ def k_decompose(k, hyperedges, size_limit=100000000):
         find_node(0, 0)
         ext_nodes = []
         new_nodes = []
+        _nodes = list(set(_nodes))
         for node in _nodes:
             if node in nodes:
                 ext_nodes.append(node)
@@ -127,23 +128,15 @@ def analyze_singluar_values(nodes, edges, rank, filename):
 def analyze_diameter(nodes, edges):
     G = snap.TUNGraph.New()
     idxs = {}
-    
-    oneset = set([])
-    for u, v in edges:
-        oneset.add(u)
-        oneset.add(v)
     for i, v in enumerate(nodes):
         idxs[v] = i
     for v in nodes:
-        if v in oneset: G.AddNode(idxs[v])
-    G_nx = nx.Graph()
+        G.AddNode(idxs[v])
     for e in edges:
         G.AddEdge(idxs[e[0]], idxs[e[1]])
         G.AddEdge(idxs[e[1]], idxs[e[0]])
-        G_nx.add_edge(idxs[e[0]], idxs[e[1]])
-        G_nx.add_edge(idxs[e[1]], idxs[e[0]])
     DegToCCfV = snap.TFltPrV()
-    print('Global Clustering Coefficient: ', nx.transitivity(G_nx))
+    print('Clustering Coefficient: ', snap.GetClustCf(G, -1))
     print('Effective Diameter: ', snap.GetBfsEffDiam(G, min(len(nodes), 10000), False))
     
 def analyze_decomposition(graph):
@@ -156,8 +149,9 @@ def analyze_decomposition(graph):
         print('Number of edges: ', len(projected_edges))
     
         analyze_gcc(projected_nodes, projected_edges)
-        analyze_degrees(projected_nodes, projected_edges, "{}_{}".format(graph.datatype, k))
-        analyze_singluar_values(projected_nodes, projected_edges, 500, "{}_{}".format(graph.datatype, k))
+        if k <= 3:
+            analyze_degrees(projected_nodes, projected_edges, "{}_{}".format(graph.datatype, k))
+            analyze_singluar_values(projected_nodes, projected_edges, 500, "{}_{}".format(graph.datatype, k))
         if k == 1:
             analyze_diameter(projected_nodes, projected_edges)
         print("")
