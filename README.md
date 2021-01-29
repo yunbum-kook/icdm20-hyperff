@@ -71,7 +71,7 @@ If you use this code as part of any published research, please consider acknowle
 @inproceedings{kook2020hyperff,
   title={Evolution of Real-world Hypergraphs: Patterns and Models without Oracles},
   author={Kook, Yunbum and Ko, Jihoon and  and Shin, Kijung},
-  booktitle={IEEE International Conference on Knowledge Discovery and Data Mining (ICDM)},
+  booktitle={IEEE International Conference on Data Mining (ICDM)},
   year={2020},
 }
 ```
